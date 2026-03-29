@@ -11,7 +11,7 @@ public class TestData {
 
     // Генерируем уникальные данные для пользователя
     static Faker user = new Faker();
-    public static final String EMAIL = user.internet().emailAddress();//user.name().lastName().toLowerCase() + user.regexify("[0-9]{4}") + "@yandex.ru";
+    public static final String EMAIL = user.internet().emailAddress();
     public static final String PASSWORD = user.regexify("[0-9]{4}");
     public static final String NAME = user.name().firstName();
 
