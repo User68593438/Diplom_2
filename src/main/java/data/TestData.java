@@ -38,5 +38,4 @@ public class TestData {
     // Текст сообщения код ответа 400 Bad Request при создании заказа без ингредиентов
     public static final String MASSAGE_NO_INGREDIENTS = "Ingredient ids must be provided"; // Не передали ни один ингредиент
 
-
 }

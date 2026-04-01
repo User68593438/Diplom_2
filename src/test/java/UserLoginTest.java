@@ -46,7 +46,6 @@ public class UserLoginTest extends BaseApiTest{
                 .body("success", equalTo(true))
                 .body("user.email", equalTo(email))
                 .body("user.name", equalTo(name));
-
     }
 
     @Test   // Не заполнен email при авторизации
@@ -64,7 +63,6 @@ public class UserLoginTest extends BaseApiTest{
                 .statusCode(HTTP_UNAUTHORIZED)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_INCORRECT_REQUIRED_DATA));
-
     }
 
     @Test   // Не заполнен password при авторизации
@@ -82,7 +80,6 @@ public class UserLoginTest extends BaseApiTest{
                 .statusCode(HTTP_UNAUTHORIZED)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_INCORRECT_REQUIRED_DATA));
-
     }
 
     @Test   // Email при авторизации заполнен с ошибкой
@@ -118,6 +115,4 @@ public class UserLoginTest extends BaseApiTest{
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_INCORRECT_REQUIRED_DATA));
     }
-
-
 }

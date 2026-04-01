@@ -44,7 +44,6 @@ public class CreateUserTest extends BaseApiTest {
                 .body("success", equalTo(true))
                 .extract()
                 .path("accessToken");
-
     }
 
     @Test   // Создание двух одинаковых пользователей
@@ -65,7 +64,6 @@ public class CreateUserTest extends BaseApiTest {
                 .statusCode(HTTP_FORBIDDEN)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_ALREADY_EXISTS));
-
     }
 
     @Test   // Не заполнен email при регистрации
@@ -83,7 +81,6 @@ public class CreateUserTest extends BaseApiTest {
                 .statusCode(HTTP_FORBIDDEN)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_REQUIRED_DATA_MISSING));
-
     }
 
     @Test   // Не заполнен password при регистрации
@@ -102,7 +99,6 @@ public class CreateUserTest extends BaseApiTest {
                 .statusCode(HTTP_FORBIDDEN)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_REQUIRED_DATA_MISSING));
-
     }
 
     @Test   // Не заполнен name при регистрации
@@ -120,7 +116,5 @@ public class CreateUserTest extends BaseApiTest {
                 .statusCode(HTTP_FORBIDDEN)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_REQUIRED_DATA_MISSING));
-
     }
-
 }

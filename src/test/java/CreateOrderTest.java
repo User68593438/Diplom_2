@@ -31,13 +31,12 @@ public class CreateOrderTest extends BaseApiTest{
 
         // Создать пользователя
         createUser(userModel);
-
     }
 
     @Test   // Создать заказ с авторизацией пользователя с ингредиентами. Позитивный тест
     @DisplayName("Создать заказ авторизированным пользователем с ингредиентами")
     @Description("Авторизированный пользователь может создать заказ с ингредиентами")
-    public void CreateOrderAuthorizedUserWithIngredientsTest() {
+    public void createOrderAuthorizedUserWithIngredientsTest() {
         // Создать заказ со списком ингредиентов
         OrderModel orderModel = new OrderModel(INGREDIENTS);
 
@@ -48,13 +47,12 @@ public class CreateOrderTest extends BaseApiTest{
                 .assertThat()
                 .statusCode(HTTP_OK)
                 .body("success", equalTo(true));
-
     }
 
     @Test   // Создать заказ без авторизации пользователя с ингредиентами. Позитивный тест
     @DisplayName("Создать заказ неавторизированным пользователем с ингредиентами")
     @Description("Неавторизированный пользователь может создать заказ с ингредиентами")
-    public void CreateOrderNoAuthorizedUserWithIngredientsTest() {
+    public void createOrderNoAuthorizedUserWithIngredientsTest() {
         // Создать заказ со списком ингредиентов
         OrderModel orderModel = new OrderModel(INGREDIENTS);
 
@@ -65,13 +63,12 @@ public class CreateOrderTest extends BaseApiTest{
                 .assertThat()
                 .statusCode(HTTP_OK)
                 .body("success", equalTo(true));
-
     }
 
     @Test   // Создать заказ с авторизацией и без ингредиентов
     @DisplayName("Код ответа 400 Bad Request если создать заказ авторизированным пользователем без ингредиентов")
     @Description("Если не передать ни один ингредиент вернется код ответа 400 Bad Request")
-    public void CreateOrderAuthorizedUserNoIngredientsTest() {
+    public void createOrderAuthorizedUserNoIngredientsTest() {
         // Создать заказ без ингредиентов
         OrderModel orderModel = new OrderModel(null);
 
@@ -83,13 +80,12 @@ public class CreateOrderTest extends BaseApiTest{
                 .statusCode(HTTP_BAD_REQUEST)
                 .body("success", equalTo(false))
                 .body("message", equalTo(MASSAGE_NO_INGREDIENTS));
-
     }
 
     @Test   // Создать заказ без авторизации и без ингредиентов
     @DisplayName("Код ответа 400 Bad Request если создать заказ без авторизации и без ингредиентов")
     @Description("Если не передать ни один ингредиент и не авторизироваться вернется код ответа 400 Bad Request")
-    public void CreateOrderNoAuthorizedUserNoIngredientsTest() {
+    public void createOrderNoAuthorizedUserNoIngredientsTest() {
         // Создать заказ без ингредиентов
         OrderModel orderModel = new OrderModel(null);
 
@@ -106,7 +102,7 @@ public class CreateOrderTest extends BaseApiTest{
     @Test // Создать заказ с авторизацией и неверным хешем ингредиента bun
     @DisplayName("Код ответа 500 Internal Server Error если создать заказ авторизированным пользователем и неверным хешем ингредиента bun")
     @Description("Если авторизироваться и передать неверный хеш ингредиента bun,  вернется код ответа 500 Internal Server Error")
-    public void CreateOrderAuthorizedUserIncorrectHashIngredientBun() {
+    public void createOrderAuthorizedUserIncorrectHashIngredientBun() {
         // Создать заказ с неверным хешем ингредиента bun
         OrderModel orderModel = new OrderModel(INGREDIENT_INVALID_HASH_BUN);
 
@@ -116,13 +112,12 @@ public class CreateOrderTest extends BaseApiTest{
                 .log().all()
                 .assertThat()
                 .statusCode(HTTP_INTERNAL_ERROR);
-
     }
 
     @Test // Создать заказ без авторизации и с неверным хешем ингредиента filling
     @DisplayName("Код ответа 500 Internal Server Error если создать заказ без авторизации пользователя и с неверным хешем ингредиент filling")
     @Description("Если не авторизироваться и передать неверный хеш ингредиента filling, вернется код ответа 500 Internal Server Error")
-    public void CreateOrderNoAuthorizedUserIncorrectHashIngredientFilling() {
+    public void createOrderNoAuthorizedUserIncorrectHashIngredientFilling() {
         // Создать заказ с неверным хешем ингредиента filling
         OrderModel orderModel = new OrderModel(INGREDIENT_INVALID_HASH_FILLING);
 
@@ -132,7 +127,5 @@ public class CreateOrderTest extends BaseApiTest{
                 .log().all()
                 .assertThat()
                 .statusCode(HTTP_INTERNAL_ERROR);
-
     }
-
 }
